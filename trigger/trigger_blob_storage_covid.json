@@ -2,7 +2,7 @@
 	"name": "trigger_blob_storage_covid",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
