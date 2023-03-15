@@ -1,0 +1,17 @@
+{
+	"name": "trigger_blob_storage_covid",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/population/blobs/covid_population.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/5cb19fab-52a4-44ca-aa7d-21bc173ce9bd/resourceGroups/NTT-DESA-NG/providers/Microsoft.Storage/storageAccounts/covidbs90",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
