@@ -296,6 +296,39 @@
 									"type": "DatasetReference"
 								}
 							]
+						},
+						{
+							"name": "Eliminar_Datos",
+							"description": "eliminación del archivo origen",
+							"type": "Delete",
+							"dependsOn": [
+								{
+									"activity": "Copy Covid Data_copy_true",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "ds_covid_population_raw_bs",
+									"type": "DatasetReference"
+								},
+								"enableLogging": false,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							}
 						}
 					]
 				}
