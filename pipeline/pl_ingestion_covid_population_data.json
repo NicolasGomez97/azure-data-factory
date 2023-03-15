@@ -72,6 +72,26 @@
 						"value": "@equals(activity('Get Metadata1').output.columnCount,12)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Web_error",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "http://trial",
+								"method": "POST",
+								"body": "Fallo"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "Copy Covid Data_copy_true",
