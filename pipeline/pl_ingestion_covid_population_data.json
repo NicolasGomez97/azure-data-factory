@@ -278,7 +278,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "Copy Covid Data_copy1",
+							"name": "Copy Covid Data_copy_true",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
