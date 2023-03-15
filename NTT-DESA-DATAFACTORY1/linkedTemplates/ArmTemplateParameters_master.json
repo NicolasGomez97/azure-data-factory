@@ -14,6 +14,9 @@
 		"ls_dls_coviddl_properties_typeProperties_url": {
 			"value": "https://coviddl90.dfs.core.windows.net/"
 		},
+		"trigger_blob_storage_covid_properties_typeProperties_scope": {
+			"value": "/subscriptions/5cb19fab-52a4-44ca-aa7d-21bc173ce9bd/resourceGroups/NTT-DESA-NG/providers/Microsoft.Storage/storageAccounts/covidbs90"
+		},
 		"containerUri": {
 			"value": ""
 		},

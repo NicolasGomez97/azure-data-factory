@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://coviddl90.dfs.core.windows.net/"
 		},
+		"trigger_blob_storage_covid_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/5cb19fab-52a4-44ca-aa7d-21bc173ce9bd/resourceGroups/NTT-DESA-NG/providers/Microsoft.Storage/storageAccounts/covidbs90"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
@@ -54,6 +58,9 @@
 					},
 					"ls_dls_coviddl_properties_typeProperties_url": {
 						"value": "[parameters('ls_dls_coviddl_properties_typeProperties_url')]"
+					},
+					"trigger_blob_storage_covid_properties_typeProperties_scope": {
+						"value": "[parameters('trigger_blob_storage_covid_properties_typeProperties_scope')]"
 					}
 				}
 			},
