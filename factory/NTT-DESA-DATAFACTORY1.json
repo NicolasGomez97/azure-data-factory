@@ -1,0 +1,9 @@
+{
+	"name": "NTT-DESA-DATAFACTORY1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1b2d0cdc-d3e7-4e81-92fe-aefb3a256e65",
+		"tenantId": "3048dc87-43f0-4100-9acb-ae1971c79395"
+	}
+}
