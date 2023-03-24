@@ -5,12 +5,16 @@
 			"referenceName": "ls_inputcsv",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "cars.csv",
 				"container": "input"
 			},
 			"columnDelimiter": ",",
