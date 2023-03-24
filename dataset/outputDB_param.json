@@ -5,6 +5,11 @@
 			"referenceName": "ls_outputdatabase",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"outDB": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
