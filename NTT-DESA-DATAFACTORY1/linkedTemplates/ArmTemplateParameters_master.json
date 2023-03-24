@@ -11,6 +11,12 @@
 		"ls_dls_coviddl_accountKey": {
 			"value": ""
 		},
+		"ls_inputcsv_connectionString": {
+			"value": ""
+		},
+		"ls_outputdatabase_connectionString": {
+			"value": ""
+		},
 		"ls_dls_coviddl_properties_typeProperties_url": {
 			"value": "https://coviddl90.dfs.core.windows.net/"
 		},

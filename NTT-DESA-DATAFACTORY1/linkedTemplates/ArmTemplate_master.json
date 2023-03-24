@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"accountKey\"de \"ls_dls_coviddl\""
 		},
+		"ls_inputcsv_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"ls_inputcsv\""
+		},
+		"ls_outputdatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"ls_outputdatabase\""
+		},
 		"ls_dls_coviddl_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://coviddl90.dfs.core.windows.net/"
@@ -55,6 +63,12 @@
 					},
 					"ls_dls_coviddl_accountKey": {
 						"value": "[parameters('ls_dls_coviddl_accountKey')]"
+					},
+					"ls_inputcsv_connectionString": {
+						"value": "[parameters('ls_inputcsv_connectionString')]"
+					},
+					"ls_outputdatabase_connectionString": {
+						"value": "[parameters('ls_outputdatabase_connectionString')]"
 					},
 					"ls_dls_coviddl_properties_typeProperties_url": {
 						"value": "[parameters('ls_dls_coviddl_properties_typeProperties_url')]"
