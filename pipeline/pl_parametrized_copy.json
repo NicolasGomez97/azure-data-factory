@@ -46,7 +46,10 @@
 						"referenceName": "inputCSV_param",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "planes.csv"
+							"fileName": {
+								"value": "@pipeline().parameters.fileName",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -55,12 +58,23 @@
 						"referenceName": "outputDB_param",
 						"type": "DatasetReference",
 						"parameters": {
-							"outDB": "planes"
+							"outDB": {
+								"value": "@pipeline().parameters.outputTable",
+								"type": "Expression"
+							}
 						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"outputTable": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
