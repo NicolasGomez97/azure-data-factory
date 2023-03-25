@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CDMDataFlow",
+				"name": "CMDDataFlow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
