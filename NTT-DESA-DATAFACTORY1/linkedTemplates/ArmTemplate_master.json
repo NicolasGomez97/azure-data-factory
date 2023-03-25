@@ -7,6 +7,10 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "NTT-DESA-DATAFACTORY1"
 		},
+		"ls_BlobMovies_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"ls_BlobMovies\""
+		},
 		"ls_blob_covidbs_connectionString": {
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"connectionString\"de \"ls_blob_covidbs\""
@@ -57,6 +61,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ls_BlobMovies_connectionString": {
+						"value": "[parameters('ls_BlobMovies_connectionString')]"
 					},
 					"ls_blob_covidbs_connectionString": {
 						"value": "[parameters('ls_blob_covidbs_connectionString')]"
