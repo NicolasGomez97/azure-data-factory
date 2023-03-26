@@ -1,0 +1,21 @@
+{
+	"name": "ds_outputCSV_crimen",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_inputcsv",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,116 @@
+{
+	"name": "ds_inputCSV_crimen",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_inputcsv",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Chicago_Crimes_2001_to_2004.csv",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Prop_0",
+				"type": "String"
+			},
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "Case Number",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Block",
+				"type": "String"
+			},
+			{
+				"name": "IUCR",
+				"type": "String"
+			},
+			{
+				"name": "Primary Type",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Location Description",
+				"type": "String"
+			},
+			{
+				"name": "Arrest",
+				"type": "String"
+			},
+			{
+				"name": "Domestic",
+				"type": "String"
+			},
+			{
+				"name": "Beat",
+				"type": "String"
+			},
+			{
+				"name": "District",
+				"type": "String"
+			},
+			{
+				"name": "Ward",
+				"type": "String"
+			},
+			{
+				"name": "Community Area",
+				"type": "String"
+			},
+			{
+				"name": "FBI Code",
+				"type": "String"
+			},
+			{
+				"name": "X Coordinate",
+				"type": "String"
+			},
+			{
+				"name": "Y Coordinate",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Updated On",
+				"type": "String"
+			},
+			{
+				"name": "Latitude",
+				"type": "String"
+			},
+			{
+				"name": "Longitude",
+				"type": "String"
+			},
+			{
+				"name": "Location",
+				"type": "String"
+			}
+		]
+	}
+}
