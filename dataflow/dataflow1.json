@@ -3,11 +3,100 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
-			"sinks": [],
-			"transformations": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_inputCSV_crimen",
+						"type": "DatasetReference"
+					},
+					"name": "SourceCrimen"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_temporal",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "RemoveColumnsAdd",
+					"description": "Generado automáticamente por acciones de vista previa de datos"
+				},
+				{
+					"name": "CrimenDate"
+				},
+				{
+					"name": "DayOfWeek"
+				}
+			],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          Prop_0 as string,",
+				"          ID as string,",
+				"          {Case Number} as string,",
+				"          Date as string,",
+				"          Block as string,",
+				"          IUCR as string,",
+				"          {Primary Type} as string,",
+				"          Description as string,",
+				"          {Location Description} as string,",
+				"          Arrest as string,",
+				"          Domestic as string,",
+				"          Beat as string,",
+				"          District as string,",
+				"          Ward as string,",
+				"          {Community Area} as string,",
+				"          {FBI Code} as string,",
+				"          {X Coordinate} as string,",
+				"          {Y Coordinate} as string,",
+				"          Year as string,",
+				"          {Updated On} as string,",
+				"          Latitude as string,",
+				"          Longitude as string,",
+				"          Location as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SourceCrimen",
+				"SourceCrimen select(mapColumn(",
+				"          ID,",
+				"          {Case Number},",
+				"          Date,",
+				"          Block,",
+				"          IUCR,",
+				"          {Primary Type},",
+				"          Description,",
+				"          {Location Description},",
+				"          Arrest,",
+				"          Domestic,",
+				"          Beat,",
+				"          District,",
+				"          Ward,",
+				"          {Community Area},",
+				"          {FBI Code},",
+				"          {X Coordinate},",
+				"          {Y Coordinate},",
+				"          Year,",
+				"          {Updated On},",
+				"          Latitude,",
+				"          Longitude,",
+				"          Location",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> RemoveColumnsAdd",
+				"RemoveColumnsAdd derive(Date = left(Date, 10)) ~> CrimenDate",
+				"CrimenDate aggregate(groupBy(dayofweekcount = dayOfWeek(toDate(Date,\"yyyy-MM-dd\"))),",
+				"     IUCR = count(IUCR)) ~> DayOfWeek",
+				"DayOfWeek sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
