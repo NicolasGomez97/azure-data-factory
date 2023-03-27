@@ -1,0 +1,22 @@
+{
+	"name": "ds_muertes_raw_http",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_http_ecdc_muertes",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "Ley002/datafactory/blob/main/muertes.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
