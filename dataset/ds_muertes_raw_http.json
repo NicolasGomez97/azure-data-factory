@@ -5,12 +5,20 @@
 			"referenceName": "ls_http_ecdc_muertes",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"relative_URL": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "Ley002/datafactory/main/muertes.csv"
+				"relativeUrl": {
+					"value": "@dataset().relative_URL",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

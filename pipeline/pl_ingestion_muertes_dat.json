@@ -13,7 +13,6 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -49,17 +48,39 @@
 				"inputs": [
 					{
 						"referenceName": "ds_muertes_raw_http",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relative_URL": {
+								"value": "@variables('sourceRelative_URL')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_muerte_raw_dl",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@variables('sinkFileName')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"variables": {
+			"sourceRelative_URL": {
+				"type": "String",
+				"defaultValue": "Ley002/datafactory/main/respuesta_estado.csv"
+			},
+			"sinkFileName": {
+				"type": "String",
+				"defaultValue": "respuesta_estado.csv"
+			}
+		},
 		"annotations": []
 	}
 }
