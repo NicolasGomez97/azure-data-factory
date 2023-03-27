@@ -93,7 +93,7 @@
 				"     IUCR = count(IUCR)) ~> DayOfWeek",
 				"DayOfWeek sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:[''],",
+				"     partitionFileNames:['CrimenChicago.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> sink1"
