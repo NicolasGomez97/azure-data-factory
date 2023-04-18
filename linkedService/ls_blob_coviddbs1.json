@@ -1,0 +1,11 @@
+{
+	"name": "ls_blob_coviddbs1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"containerUri": "https://covidbs90.blob.core.windows.net/config",
+			"authenticationType": "Anonymous"
+		}
+	}
+}
