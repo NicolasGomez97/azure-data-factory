@@ -1,0 +1,19 @@
+{
+	"name": "ds_config_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_inputcsv",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "file_list.json",
+				"container": "config"
+			}
+		},
+		"schema": {}
+	}
+}
