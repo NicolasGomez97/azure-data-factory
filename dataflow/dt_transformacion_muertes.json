@@ -30,7 +30,8 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 0,",
-				"     ignoreNoFilesFound: false) ~> muertesCsvRaw"
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> muertesCsvRaw"
 			]
 		}
 	}
