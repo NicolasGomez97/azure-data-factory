@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_muertes_raw_http",
+						"referenceName": "ds_muerte_raw_dl",
 						"type": "DatasetReference"
 					},
 					"name": "muertesCsvRaw"
@@ -16,15 +16,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          country as string,",
-				"          country_code as string,",
-				"          continent as string,",
-				"          population as string,",
-				"          indicator as string,",
-				"          daily_count as string,",
-				"          date as string,",
-				"          rate_14_day as string,",
-				"          source as string",
+				"          Column_1 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
