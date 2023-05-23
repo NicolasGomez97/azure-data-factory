@@ -111,10 +111,7 @@
 							"outputs": [
 								{
 									"referenceName": "ds_muerte_raw_dl",
-									"type": "DatasetReference",
-									"parameters": {
-										"fileName": "@item().sinkFileName"
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
