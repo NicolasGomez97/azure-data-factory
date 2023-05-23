@@ -35,7 +35,7 @@
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 0,",
 				"     ignoreNoFilesFound: false) ~> muertesCsvRaw",
-				"muertesCsvRaw filter(ERROR_FUNCTION('')) ~> filtermuertes"
+				"muertesCsvRaw filter(continent == 'Europe') ~> filtermuertes"
 			]
 		}
 	}
