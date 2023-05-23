@@ -5,11 +5,6 @@
 			"referenceName": "ls_http_ecdc_muertes",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"fileName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
@@ -22,6 +17,30 @@
 			"quoteChar": "\""
 		},
 		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
 			{
 				"type": "String"
 			}
