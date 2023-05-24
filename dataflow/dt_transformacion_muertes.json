@@ -16,6 +16,12 @@
 			"transformations": [
 				{
 					"name": "filtermuertes"
+				},
+				{
+					"name": "selectioneuropemuerte"
+				},
+				{
+					"name": "muertespivot"
 				}
 			],
 			"scriptLines": [
@@ -35,7 +41,28 @@
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 0,",
 				"     ignoreNoFilesFound: false) ~> muertesCsvRaw",
-				"muertesCsvRaw filter(continent == 'Europe') ~> filtermuertes"
+				"muertesCsvRaw filter(continent == 'Europe') ~> filtermuertes",
+				"filtermuertes select(mapColumn(",
+				"          country,",
+				"          country_code,",
+				"          population,",
+				"          indicator,",
+				"          daily_count,",
+				"          date_process = date,",
+				"          source,",
+				"          each(match(true()),",
+				"               'casos_'+ $$ = $$)",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectioneuropemuerte",
+				"selectioneuropemuerte pivot(groupBy(indicator,",
+				"          country_code,",
+				"          population,",
+				"          daily_count,",
+				"          date_process,",
+				"          source),",
+				"     columnNaming: '$N$V',",
+				"     lateral: true) ~> muertespivot"
 			]
 		}
 	}
