@@ -1,5 +1,5 @@
 {
-	"name": "dt_transformacion_muertes",
+	"name": "dataFlowTransformacionMuertes",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -51,7 +51,7 @@
 				"          date_process = date,",
 				"          source,",
 				"          each(match(true()),",
-				"               'casos_'+ $$ = $$)",
+				"               'casos_'+$$ = $$)",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectioneuropemuerte",
