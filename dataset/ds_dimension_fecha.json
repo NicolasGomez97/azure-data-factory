@@ -1,0 +1,27 @@
+{
+	"name": "ds_dimension_fecha",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dimension_fechas",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dimension_fechas.csv",
+				"fileSystem": "dimensions"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
