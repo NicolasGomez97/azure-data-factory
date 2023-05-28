@@ -134,7 +134,25 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          country,",
+				"          country_code,",
+				"          population,",
+				"          daily_count,",
+				"          date_process,",
+				"          source,",
+				"          count_confirmed_case = {count_confirmed case},",
+				"          count_deaths,",
+				"          fecha_id,",
+				"          fecha,",
+				"          year,",
+				"          mes,",
+				"          dia,",
+				"          year_mes,",
+				"          year_semana,",
+				"          {añomesdia}",
+				"     )) ~> sink2"
 			]
 		}
 	}
