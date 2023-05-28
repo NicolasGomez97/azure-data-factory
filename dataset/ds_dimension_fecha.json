@@ -20,6 +20,31 @@
 		},
 		"schema": [
 			{
+				"name": "fecha_id",
+				"type": "String"
+			},
+			{
+				"name": "fecha",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "mes",
+				"type": "String"
+			},
+			{
+				"name": "dia",
+				"type": "String"
+			},
+			{
+				"name": "year_mes",
+				"type": "String"
+			},
+			{
+				"name": "year_semana",
 				"type": "String"
 			}
 		]
