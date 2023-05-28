@@ -1,0 +1,19 @@
+{
+	"name": "ds_dataflow_paquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ld_dataflow_processedall",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "dataflowrest"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
