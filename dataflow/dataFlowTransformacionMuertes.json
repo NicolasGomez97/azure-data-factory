@@ -69,7 +69,7 @@
 				"     columnNaming: '$N_$V',",
 				"     lateral: true) ~> muertespivot",
 				"muertespivot split(country == 'Georgia' || country_code == 'GEO',",
-				"     disjoint: false) ~> condicionalpSplit1@(Georgia_country, )"
+				"     disjoint: false) ~> condicionalpSplit1@(Georgiacountry, restcountries)"
 			]
 		}
 	}
