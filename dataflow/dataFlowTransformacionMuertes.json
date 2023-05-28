@@ -38,6 +38,9 @@
 				},
 				{
 					"name": "muestesfechasenriquecido"
+				},
+				{
+					"name": "sortedgeorgiacases"
 				}
 			],
 			"scriptLines": [
@@ -95,12 +98,13 @@
 				"     lateral: true) ~> muertespivot",
 				"muertespivot split(country == 'Georgia' || country_code == 'GEO',",
 				"     disjoint: false) ~> condicionalpSplit1@(Georgiacountry, restcountries)",
-				"sourceFechas derive({añomesdia} = year + '-0' + mes + '-' +dia) ~> derivedColumnFechas",
+				"sourceFechas derive({añomesdia} = year + '-0' + mes + iif(toInteger(dia)<10, \"-0\"+dia, \"-\"+dia)) ~> derivedColumnFechas",
 				"condicionalpSplit1@restcountries, derivedColumnFechas join(date_process == {añomesdia},",
 				"     joinType:'right',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> muestesfechasenriquecido"
+				"     broadcast: 'auto')~> muestesfechasenriquecido",
+				"condicionalpSplit1@Georgiacountry sort(asc({count_confirmed case}, false)) ~> sortedgeorgiacases"
 			]
 		}
 	}
