@@ -22,6 +22,9 @@
 				},
 				{
 					"name": "muertespivot"
+				},
+				{
+					"name": "condicionalpSplit1"
 				}
 			],
 			"scriptLines": [
@@ -55,14 +58,18 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectioneuropemuerte",
-				"selectioneuropemuerte pivot(groupBy(indicator,",
+				"selectioneuropemuerte pivot(groupBy(country,",
 				"          country_code,",
 				"          population,",
 				"          daily_count,",
 				"          date_process,",
 				"          source),",
+				"     pivotBy(indicator, ['confirmed case', 'deaths']),",
+				"     count = sum(daily_count),",
 				"     columnNaming: '$N$V',",
-				"     lateral: true) ~> muertespivot"
+				"     lateral: true) ~> muertespivot",
+				"muertespivot split(country == 'Georgia' || country_code == 'GEO',",
+				"     disjoint: false) ~> condicionalpSplit1@(Georgia_country, )"
 			]
 		}
 	}
