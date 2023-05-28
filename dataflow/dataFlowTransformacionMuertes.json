@@ -35,6 +35,9 @@
 				},
 				{
 					"name": "derivedColumnFechas"
+				},
+				{
+					"name": "muestesfechasenriquecido"
 				}
 			],
 			"scriptLines": [
@@ -92,7 +95,12 @@
 				"     lateral: true) ~> muertespivot",
 				"muertespivot split(country == 'Georgia' || country_code == 'GEO',",
 				"     disjoint: false) ~> condicionalpSplit1@(Georgiacountry, restcountries)",
-				"sourceFechas derive({añomesdia} = year + '-' + mes + '-' +dia) ~> derivedColumnFechas"
+				"sourceFechas derive({añomesdia} = year + '-0' + mes + '-' +dia) ~> derivedColumnFechas",
+				"condicionalpSplit1@restcountries, derivedColumnFechas join(date_process == {añomesdia},",
+				"     joinType:'right',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> muestesfechasenriquecido"
 			]
 		}
 	}
