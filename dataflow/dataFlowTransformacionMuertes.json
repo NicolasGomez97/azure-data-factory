@@ -16,7 +16,7 @@
 						"referenceName": "ds_dimension_fecha",
 						"type": "DatasetReference"
 					},
-					"name": "dimensionFecha"
+					"name": "source1"
 				}
 			],
 			"sinks": [],
@@ -32,6 +32,9 @@
 				},
 				{
 					"name": "condicionalpSplit1"
+				},
+				{
+					"name": "derivedColumnFechas"
 				}
 			],
 			"scriptLines": [
@@ -56,7 +59,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> dimensionFecha",
+				"     ignoreNoFilesFound: false) ~> source1",
 				"muertesCsvRaw filter(continent == 'Europe') ~> filtermuertes",
 				"filtermuertes select(mapColumn(",
 				"          country,",
@@ -82,7 +85,8 @@
 				"     columnNaming: '$N_$V',",
 				"     lateral: true) ~> muertespivot",
 				"muertespivot split(country == 'Georgia' || country_code == 'GEO',",
-				"     disjoint: false) ~> condicionalpSplit1@(Georgiacountry, restcountries)"
+				"     disjoint: false) ~> condicionalpSplit1@(Georgiacountry, restcountries)",
+				"source1 derive({añomesdia} = ERROR_FUNCTION('')) ~> derivedColumnFechas"
 			]
 		}
 	}
