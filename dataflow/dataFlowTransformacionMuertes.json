@@ -34,7 +34,7 @@
 				"          continent as string,",
 				"          population as string,",
 				"          indicator as string,",
-				"          daily_count as string,",
+				"          daily_count as integer,",
 				"          date as string,",
 				"          rate_14_day as string,",
 				"          source as string",
