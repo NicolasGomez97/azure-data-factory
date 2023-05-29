@@ -14,9 +14,9 @@
 			],
 			"sinks": [
 				{
-					"linkedService": {
-						"referenceName": "ls_outputdatabase",
-						"type": "LinkedServiceReference"
+					"dataset": {
+						"referenceName": "AzureSqlTableFecha",
+						"type": "DatasetReference"
 					},
 					"name": "sink1"
 				}
@@ -44,14 +44,11 @@
 				"sourceFecha filter(month(date) == 04) ~> filterFecha",
 				"filterFecha sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
 				"     format: 'table',",
-				"     store: 'sqlserver',",
-				"     schemaName: '',",
-				"     tableName: '',",
-				"     insertable: true,",
-				"     updateable: false,",
-				"     deletable: false,",
-				"     upsertable: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
