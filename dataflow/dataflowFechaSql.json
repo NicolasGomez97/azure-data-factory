@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_muertes_http_bl",
+						"referenceName": "ds_inputCSV_crimen",
 						"type": "DatasetReference"
 					},
 					"name": "sourceFecha"
@@ -19,29 +19,59 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableFecha",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
 				}
 			],
 			"transformations": [
 				{
 					"name": "filterFecha"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "dayofweek"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          country as string,",
-				"          country_code as string,",
-				"          continent as string,",
-				"          population as string,",
-				"          indicator as string,",
-				"          daily_count as string,",
-				"          date as string,",
-				"          rate_14_day as string,",
-				"          source as string",
+				"          Prop_0 as string,",
+				"          ID as string,",
+				"          {Case Number} as string,",
+				"          Date as string,",
+				"          Block as string,",
+				"          IUCR as string,",
+				"          {Primary Type} as string,",
+				"          Description as string,",
+				"          {Location Description} as string,",
+				"          Arrest as string,",
+				"          Domestic as string,",
+				"          Beat as string,",
+				"          District as string,",
+				"          Ward as string,",
+				"          {Community Area} as string,",
+				"          {FBI Code} as string,",
+				"          {X Coordinate} as string,",
+				"          {Y Coordinate} as string,",
+				"          Year as string,",
+				"          {Updated On} as string,",
+				"          Latitude as string,",
+				"          Longitude as string,",
+				"          Location as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceFecha",
-				"sourceFecha filter(like(date, '04')) ~> filterFecha",
+				"derivedColumn1 filter(year(Date) >= 2004) ~> filterFecha",
+				"sourceFecha derive(Date = toDate(left(Date,10),'dd/MM/yyyy') ) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(Date),",
+				"     DateDay = ERROR_FUNCTION('')) ~> dayofweek",
 				"filterFecha sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -51,7 +81,17 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
+				"dayofweek sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
 	}
