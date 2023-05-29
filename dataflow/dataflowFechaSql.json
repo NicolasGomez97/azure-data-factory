@@ -1,0 +1,38 @@
+{
+	"name": "dataflowFechaSql",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_dimension_fecha",
+						"type": "DatasetReference"
+					},
+					"name": "sourceFecha"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "filterFecha"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          fecha_id as string,",
+				"          fecha as string,",
+				"          year as string,",
+				"          mes as string,",
+				"          dia as string,",
+				"          year_mes as string,",
+				"          year_semana as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceFecha",
+				"sourceFecha filter(year == '2020') ~> filterFecha"
+			]
+		}
+	}
+}
