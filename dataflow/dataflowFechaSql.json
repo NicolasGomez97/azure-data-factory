@@ -22,7 +22,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTableFecha",
+						"referenceName": "AzureSqlTableDayofWeek",
 						"type": "DatasetReference"
 					},
 					"name": "sink2"
@@ -69,9 +69,9 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceFecha",
 				"derivedColumn1 filter(year(Date) >= 2004) ~> filterFecha",
-				"sourceFecha derive(Date = toDate(left(Date,10),'dd/MM/yyyy') ) ~> derivedColumn1",
-				"derivedColumn1 aggregate(groupBy(Date),",
-				"     DateDay = ERROR_FUNCTION('')) ~> dayofweek",
+				"sourceFecha derive(Date = toDate(left(Date,10),'dd/MM/yyyy')) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(dayofweekcount = dayOfWeek(Date)),",
+				"     IUCR = count(IUCR)) ~> dayofweek",
 				"filterFecha sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
